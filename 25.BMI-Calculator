@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator</title>
+</head>
+<body>
+  <h2>BMI Calculator</h2>
+  <label>Weight (kg): </label>
+  <input type="number" id="weightInput"><br><br>
+  <label>Height (cm): </label>
+  <input type="number" id="heightInput"><br><br>
+  <button id="calculateBtn">Calculate BMI</button>
+  <h3 id="resultArea"></h3>
+</body>
+</html>
+    <script>
+// Step 1: Select elements
+const weightField = document.getElementById("weightInput");
+const heightField = document.getElementById("heightInput");
+const calculateButton = document.getElementById("calculateBtn");
+const resultSection = document.getElementById("resultArea");
+
+// Step 2: Add click event
+calculateButton.addEventListener("click", function() {
+
+    // Step 3: Get values
+    const weightValue = Number(weightField.value);
+    const heightValue = Number(heightField.value);
+
+    // Step 4: Validation
+    if (weightValue <= 0 || heightValue <= 0 || isNaN(weightValue) || isNaN(heightValue)) {
+        resultSection.innerText = "Please enter valid positive numbers!";
+        return;
+    }
+
+    // Step 5: Convert height to meter
+    const heightInMeter = heightValue / 100;
+
+    // Step 6: BMI Formula
+    const bmiValue = weightValue / (heightInMeter * heightInMeter);
+
+    // Step 7: Round value
+    const finalBmi = bmiValue.toFixed(2);
+
+    // Step 8: Category
+    let categoryText = "";
+
+    if (finalBmi < 18.5) {
+        categoryText = "Underweight";
+    } 
+    else if (finalBmi >= 18.5 && finalBmi < 24.9) {
+        categoryText = "Normal Weight";
+    } 
+    else if (finalBmi >= 25 && finalBmi < 29.9) {
+        categoryText = "Overweight";
+    } 
+    else {
+        categoryText = "Obese";
+    }
+
+    // Step 9: Show result
+    resultSection.innerText = `Your BMI is ${finalBmi} (${categoryText})`;
+
+});
+    </script>
+</body>
+</html>
