@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Bgc Color </title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>Color Changer</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+      border: 2px solid black;
+    }
+
+    #red { background-color: red; }
+    #green { background-color: green; }
+    #blue { background-color: blue; }
+    #yellow { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <div id="red" class="box"></div>
+  <div id="green" class="box"></div>
+  <div id="blue" class="box"></div>
+  <div id="yellow" class="box"></div>
+</body>
+</html>
+    <script>
+// Step 1: Select all boxes
+const colorBoxes = document.querySelectorAll(".box");
+
+// Step 2: Loop through each box
+colorBoxes.forEach(function(singleBox) {
+
+  // Step 3: Add click event to each box
+  singleBox.addEventListener("click", function(eventObject) {
+
+    // Step 4: Get clicked box id
+    const selectedColor = eventObject.target.id;
+
+    // Step 5: Change body background color
+    document.body.style.backgroundColor = selectedColor;
+
+  });
+
+});
+   </script>
+</body>
+</html>
